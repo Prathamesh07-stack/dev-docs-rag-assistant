@@ -4,7 +4,11 @@ from sqlalchemy import Column, String, Float, Integer, DateTime, Text, JSON
 from datetime import datetime
 import os
 
-DATA_DIR = os.getenv("DATA_DIR", "./data")
+# Resolve data dir relative to the project root (parent of backend/)
+_BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.getenv("DATA_DIR", os.path.join(_BACKEND_DIR, "data"))
+os.makedirs(DATA_DIR, exist_ok=True)   # auto-create on first run
+
 DATABASE_URL = f"sqlite+aiosqlite:///{DATA_DIR}/staging.db"
 
 engine = create_async_engine(DATABASE_URL, echo=False)

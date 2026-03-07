@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "How do I deploy to staging?",
+      "expected_doc_title": "Deployment Guide",
+      "expected_section": "Deploy to Staging",
+      "notes": "Should retrieve step-by-step staging deployment instructions"
+    },
+    {
+      "id": 2,
+      "question": "What is the rollback procedure?",
+      "expected_doc_title": "Deployment Guide",
+      "expected_section": "Rollback Procedure",
+      "notes": "Should retrieve the git revert + vector DB reset procedure"
+    },
+    {
+      "id": 3,
+      "question": "What Python version should I use?",
+      "expected_doc_title": "Deployment Guide",
+      "expected_section": "Prerequisites",
+      "notes": "Should find Python 3.12 requirement and ChromaDB incompatibility note"
+    },
+    {
+      "id": 4,
+      "question": "How do I install Ollama?",
+      "expected_doc_title": "Deployment Guide",
+      "expected_section": "Install and start Ollama",
+      "notes": "Should retrieve brew install ollama + ollama serve commands"
+    },
+    {
+      "id": 5,
+      "question": "What is RAG?",
+      "expected_doc_title": "AI & RAG Concepts",
+      "expected_section": "What is RAG?",
+      "notes": "Should return Retrieval-Augmented Generation explanation"
+    },
+    {
+      "id": 6,
+      "question": "What embedding model is used?",
+      "expected_doc_title": "AI & RAG Concepts",
+      "expected_section": "Embeddings",
+      "notes": "Should find BAAI/bge-base-en-v1.5 with 768 dimensions"
+    },
+    {
+      "id": 7,
+      "question": "What is the confidence threshold for refusing to answer?",
+      "expected_doc_title": "AI & RAG Concepts",
+      "expected_section": "Confidence Thresholds",
+      "notes": "Should return 0.60 as the low confidence threshold"
+    },
+    {
+      "id": 8,
+      "question": "What is the chunk size?",
+      "expected_doc_title": "AI & RAG Concepts",
+      "expected_section": "Chunking Strategy",
+      "notes": "Should retrieve 512 tokens with 64-token overlap"
+    },
+    {
+      "id": 9,
+      "question": "How do I call the chat API?",
+      "expected_doc_title": "API Reference",
+      "expected_section": "POST /api/chat",
+      "notes": "Should retrieve the request body format with session_id, message, top_k"
+    },
+    {
+      "id": 10,
+      "question": "What does the search endpoint return?",
+      "expected_doc_title": "API Reference",
+      "expected_section": "GET /api/search",
+      "notes": "Should return SearchResult schema with score, doc_title, section"
+    },
+    {
+      "id": 11,
+      "question": "What happens when the LLM is offline?",
+      "expected_doc_title": "API Reference",
+      "expected_section": "Error Responses",
+      "notes": "Should return 503 error with Ollama message"
+    },
+    {
+      "id": 12,
+      "question": "What are the success criteria for this project?",
+      "expected_doc_title": "Proof of Concept",
+      "expected_section": "Success Criteria",
+      "notes": "Should return retrieval hit rate >= 70%, latency < 5s"
+    },
+    {
+      "id": 13,
+      "question": "What is out of scope for the POC?",
+      "expected_doc_title": "Proof of Concept",
+      "expected_section": "POC Scope",
+      "notes": "Should return RBAC, external web search, multi-tenancy"
+    },
+    {
+      "id": 14,
+      "question": "How do I add a new document source?",
+      "expected_doc_title": "Developer Guide",
+      "expected_section": "Adding a New Document Source",
+      "notes": "Should return instructions for adding a new loader class"
+    },
+    {
+      "id": 15,
+      "question": "How do I switch to Groq for better answer quality?",
+      "expected_doc_title": "Developer Guide",
+      "expected_section": "Changing the LLM",
+      "notes": "Should return LLM_PROVIDER=groq with GROQ_API_KEY env var"
+    }
+  ]
+}

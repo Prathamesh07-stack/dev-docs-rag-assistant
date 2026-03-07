@@ -57,6 +57,9 @@ async def run_ingestion(config_path: str):
     total_failed = 0
     start = time.time()
 
+    # All relative paths in YAML resolve from the config file's directory
+    config_dir = Path(config_path).resolve().parent
+
     async with AsyncSessionLocal() as session:
         for source in sources:
             name = source.get("name", "unnamed")
@@ -68,6 +71,12 @@ async def run_ingestion(config_path: str):
                 continue
 
             logger.info("ingest.source_start", name=name, type=source_type)
+
+            # Resolve relative paths (./data/docs etc.) against config dir
+            source = dict(source)
+            for path_key in ("path", "docs_path"):
+                if path_key in source and not Path(str(source[path_key])).is_absolute():
+                    source[path_key] = str((config_dir / source[path_key]).resolve())
 
             try:
                 loader = get_loader(source)

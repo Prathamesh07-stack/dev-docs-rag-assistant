@@ -32,7 +32,11 @@ from models.document import Document
 
 logger = structlog.get_logger()
 
-CHROMA_PERSIST_DIR = os.getenv("CHROMA_PERSIST_DIR", "./data/vectordb")
+# Resolve project root (parent of backend/) for consistent paths
+_PROJECT_ROOT    = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_DEFAULT_CHROMA  = os.path.join(_PROJECT_ROOT, "data", "vectordb")
+
+CHROMA_PERSIST_DIR = os.getenv("CHROMA_PERSIST_DIR", _DEFAULT_CHROMA)
 CHROMA_COLLECTION  = os.getenv("CHROMA_COLLECTION", "rag_docs")
 
 
