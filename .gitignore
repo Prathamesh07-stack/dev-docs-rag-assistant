@@ -205,3 +205,83 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ── RAG Project Specific ────────────────────────────────────────────────────
+
+# Secrets / environment
+.env
+backend/.env
+
+# ── Vector Database ──────────────────────────────────────────────────────────
+# Chroma persisted index — regenerated via `make index`
+data/vectordb/
+*.chroma/
+
+# ── Staging / Runtime Data ────────────────────────────────────────────────────
+# SQLite audit + index tracking DB — created at runtime
+data/staging.db
+data/staging.db-journal
+data/staging.db-shm
+data/staging.db-wal
+
+# Raw uploaded/cloned documents — too large, added via config
+data/docs/*
+data/pdfs/*
+data/html/*
+data/raw/*
+# Keep directory structure in git
+!data/docs/.gitkeep
+!data/pdfs/.gitkeep
+!data/html/.gitkeep
+
+# Cloned git repos used for ingestion
+data/repos/
+
+# ── ML Model Cache ────────────────────────────────────────────────────────────
+# sentence-transformers downloads models here
+.cache/
+~/.cache/huggingface/
+backend/.cache/
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/
+backend/logs/
+
+# ── Next.js / Frontend ────────────────────────────────────────────────────────
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# ── IDE / Editor ─────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# ── Eval outputs ─────────────────────────────────────────────────────────────
+# Raw LLM answer logs from eval runs (can be large)
+eval/output/
+eval/*.jsonl
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+*.bak
+*.tmp
+
+# ── Data & Vector DB Server Files ────────────────────────────────────────────
+data/
+backend/data/

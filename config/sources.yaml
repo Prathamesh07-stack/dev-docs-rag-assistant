@@ -1,0 +1,57 @@
+# Doc source configuration
+# Add your documentation sources here
+
+sources:
+  - type: markdown
+    name: local-docs
+    path: ../data/docs          # Local folder with .md files
+    enabled: true
+
+  - type: pdf
+    name: local-pdfs
+    path: ../data/pdfs          # Local folder with .pdf files
+    enabled: true
+
+  - type: git
+    name: example-repo
+    repo_url: https://github.com/your-org/your-repo.git
+    branch: main
+    docs_path: docs            # Subpath inside repo to index
+    enabled: false             # Set true when ready
+
+  - type: html
+    name: local-html
+    path: ./data/html          # Local folder with .html files
+    enabled: false
+
+# Chunking settings
+chunking:
+  chunk_size: 512              # Target tokens per chunk
+  chunk_overlap: 64            # Overlap tokens between chunks (~12%)
+  min_chunk_size: 50           # Skip chunks smaller than this
+
+# Embedding settings
+embedding:
+  model: BAAI/bge-base-en-v1.5
+  batch_size: 32
+  max_retries: 3
+
+# Vector DB settings
+vector_db:
+  provider: chroma
+  persist_directory: ../data/vectordb
+  collection_name: rag_docs
+
+# Retrieval settings
+retrieval:
+  top_k: 5
+  confidence_high: 0.80        # Above this → answer normally
+  confidence_low: 0.60         # Below this → refuse to answer
+
+# LLM settings
+llm:
+  provider: ollama             # ollama | openai
+  model: llama3.1:8b
+  base_url: http://localhost:11434
+  temperature: 0.1
+  max_tokens: 1024
