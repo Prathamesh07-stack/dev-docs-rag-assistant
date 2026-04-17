@@ -1,0 +1,12 @@
+name = "rag-chatbot"
+type = "javascript"
+account_id = ""
+workers_dev = true
+main = "dist/index.js"
+compatibility_date = "2024-12-16"
+
+[env.production]
+name = "rag-chatbot-prod"
+routes = [
+  { pattern = "yourdomain.com", zone_id = "" }
+]

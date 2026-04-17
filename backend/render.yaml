@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: rag-chatbot-backend
+    runtime: python-3.11
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: ENV
+        value: production
+      - key: DATA_DIR
+        value: /app/data
+      - key: CONFIG_PATH
+        value: /app/config/sources.yaml
+      - key: PORT
+        value: "8000"
